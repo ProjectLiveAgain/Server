@@ -23,6 +23,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/dashboard", taskRoutes);
 
+
 // console.log(process.env.JWT_SECRET)
 // Health Check Route
 app.get("/", (req, res) => {

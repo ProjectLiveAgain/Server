@@ -84,3 +84,33 @@ export const getStats = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+
+
+//Task Pending Handling API
+export const statusUpdate = async(req,res)=>{
+  try{
+    console.log(req.params)
+      const task = await Task.findOneAndUpdate(
+      { _id: req.params.id, user: req.user.id },
+      { $set: {status:"Completed"} },
+      { new: true }
+    );
+    console.log(task)
+      res.json({message:"Working api status"})
+  }
+  catch(err){
+    console.error(err);
+    res.status(500).json({ message: 'Error on StatusUpdate API' });
+  }
+}
+
+
+export const testing=async(req,res)=>{
+  try {
+    res.json({"message":"Api running perfectly"})
+    console.log("Api running")
+  } catch (error) {
+    console.log(error)
+  }
+}
